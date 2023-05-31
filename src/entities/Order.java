@@ -43,19 +43,24 @@ public class Order {
         this.client = client;
     }
 
-    public List<OrderItem> getItems(){
+    public List<OrderItem> getItems() {
         return items;
     }
 
-    public void addItem(OrderItem item){
+    public void addItem(OrderItem item) {
         items.add(item);
     }
 
-    public void removeItem(OrderItem item){
+    public void removeItem(OrderItem item) {
         items.remove(item);
     }
 
-    public Double total(){
-        return 0.0;
+    public Double total() {
+        double total = 0.0;
+        for (OrderItem item:items) {
+            total += item.subtotal();
+        }
+
+        return total;
     }
 }
